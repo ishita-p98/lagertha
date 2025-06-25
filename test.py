@@ -25,7 +25,7 @@ def add_expense(expenses):
     print("Expense Added!") 
 
 #view all expenses
-def view_expenses(expenses)
+def view_expenses(expenses):
     if not expenses:
         print("No expenses recorded")
     for e in expenses:
@@ -42,6 +42,6 @@ def summarize_by_category(expenses):
     for cat, total in summary.items():
         print(f"{cat}:INR{total:.2f}")
 
-if _name_=="_main_":
+if __name__=="_main_":
     main()
 
