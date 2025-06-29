@@ -3,10 +3,10 @@ import pandas as pd #library for working on tables of data
 import matplotlib.pyplot as plt #part of library used for making charts and graphs
 
 #take user imports
-loan_amount = float(input("Enter the loan amaount:"))
-annual_interest_rate = float(input("Enter annual interest rate in %"))/100
-loan_term_years = int(input("Enter the loan term in years:"))
-payments_per_year = int(input("Enter number of payments per year (eg. 12 for monthly):"))
+loan_amount = float(input("Enter the loan amaount: "))
+annual_interest_rate = float(input("Enter annual interest rate in %: "))/100
+loan_term_years = int(input("Enter the loan term in years: "))
+payments_per_year = int(input("Enter number of payments per year (eg. 12 for monthly): "))
 
 total_payments = loan_term_years*payments_per_year
 periodic_rate = annual_interest_rate/payments_per_year
