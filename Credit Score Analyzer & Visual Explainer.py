@@ -1,6 +1,7 @@
 import pandas as pd #used for creating and managing structured data
 import matplotlib.pyplot as plt #used for plotting graphs
 import seaborn as sns #high-level interface for drawing statistical graphics
+import time
 
 #define weights of each factor based on FICO model
 credit_weights = {
@@ -52,7 +53,7 @@ def plot_radar(data):
     values += values[:1]
     labels += labels[:1]
 
-    angles = [n/float(len(/labels))*2*3.14159 for n in range(len(lables))]
+    angles = [n/float(len(labels))*2*3.14159 for n in range(len(labels))]
 
     fig, ax = plt.subplots(figsize=(6,6), subplot_kw=dict(polar=True))
     ax.plot(angles, values, linewidth=2) #outline shape
@@ -60,8 +61,8 @@ def plot_radar(data):
     ax.set_yticklabels([]) #hides the circular grid labels
     ax.set_xticks(angles) #places text at correct angle points
     ax.set_xticklabels(labels) #adds the labels like "Credit Mix"
-    ax.title("Credit Score Factor Breakdown")
-    plt.show
+    ax.set_title("Credit Score Factor Breakdown")
+    plt.show()
 
 #visualize current vs simulated score via bar graph
 def plot_score_comparison(current, simulated):
@@ -69,7 +70,7 @@ def plot_score_comparison(current, simulated):
         "Type": ["Current", "Simulated"],
         "Credit Score": [current,simulated]
     })
-    sns.barplot(data=df, x="Type", y="Credit Score", palette="viridis")
+    sns.barplot(data=df, x="Type", y="Credit Score", hue="Type", palette="viridis", legend=False)
     plt.title("Credit Score Comparison")
     plt.ylim(300, 850)
     plt.show()
@@ -87,9 +88,8 @@ if user_input:
     simulated_score = calculate_credit_score(simulated_input)
     print(f"With improved behavior, your score could become: {simulated_score}\n")
 
-    plot_radar(user_input)
     plot_score_comparison(current_score, simulated_score)
+    time.sleep(1)  # ⏸️ give the system a second to process
+    plot_radar(user_input)
 else:
     print("Invalid input!")
-
-
